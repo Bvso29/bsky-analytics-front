@@ -36,12 +36,12 @@ export const StyledSpan = styled.span`
     }
 
     /* If para Adicionar Cor ao Span */
-    ${({ spanStyle }) => {
-        if (spanStyle === "styleUp") {
+    ${({ spanstyle }) => {
+        if (spanstyle === "styleUp") {
             return css`
                 color: green;
             `
-        } else if (spanStyle === "styleDown") {
+        } else if (spanstyle === "styleDown") {
             return css`
                 color: red;
             `

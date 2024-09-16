@@ -29,7 +29,7 @@ const HeatMapGraphic = () => {
             width: '100%',
             type: 'heatmap',
             toolbar: {
-                show: false, // Desativar a toolbar
+                show: true, // Desativar a toolbar
             },
         },
         plotOptions: {

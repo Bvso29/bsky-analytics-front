@@ -71,7 +71,7 @@ export const StyledCen001 = styled.div`
 // Espacamento 002
 export const StyledCen002 = styled.div`
     width: calc(100% - 40px);
-    max-width: 120rem;
+    /* max-width: 120rem; */
     margin: 0 auto;
     /* padding: 2rem 0; */
 `

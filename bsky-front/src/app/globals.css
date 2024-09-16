@@ -9,10 +9,15 @@
   --Cor000: #f0f0f0;
   --Cor001: #141414;
   --Cor002: #0095f6;
-  --Cor003: #6c6c6c;
+  --Cor003: #97a5d1;
+  --Cor004: #6c6c6c;
+  --Cor005: #fdfdfd5e;
 
-  --Bkg001: #000000;
-  --Bkg002: #16181c;
+  /* --Bkg001: #000000;
+  --Bkg002: #16181c; */
+
+  --Bkg001: #081028;
+  --Bkg002: #0b1739;
 
   --tile-start-rgb: 239, 245, 249;
   --tile-end-rgb: 228, 232, 233;
@@ -124,9 +129,22 @@ button {
   justify-content: center;
   align-items: center;
   /* Borda */
-  border-left: 0.2rem solid #444549;
+
 }
 
 .Ite_Pad:nth-child(1) {
   border-left: none;
+}
+
+/* Coloca cor menu no gráfico InteractionsGraphic */
+.apexcharts-menu{
+  color: blue;
+}
+
+/* Cor da hover no grafico InteractionsGraphic */
+.apexcharts-tooltip  {
+  background-color: #070f25 !important;
+}
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title{
+  background-color: #070f25 !important;
 }
