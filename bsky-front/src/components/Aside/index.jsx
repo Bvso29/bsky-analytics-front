@@ -94,17 +94,19 @@ import { useEffect, useState } from "react";
 export function Aside({ userData }) {
 
     const handleLogout = () => {
-        localStorage.clear(); // Limpa o localStorage
-        window.location.href = '/login'; // Redireciona para a página de login
+        if (typeof window !== 'undefined') {
+            localStorage.clear(); // Limpa o localStorage
+            window.location.href = '/login'; // Redireciona para a página de login
+        }
     };
-
-console.log(userData)
+    
+    console.log(userData)
     return (
         <StyledAside>
             <div className="Perfil">
                 <div className="Perfil_Img_Nom">
                     {userData && (
-                       <Image src={userData.avatar} alt="Perfil" width={50} height={50} /> // Usa a imagem do usuário
+                        <Image src={userData.avatar} alt="Perfil" width={50} height={50} /> // Usa a imagem do usuário
                     )}
                     <div className="Perfil_Inf">
                         <StyledTex001>

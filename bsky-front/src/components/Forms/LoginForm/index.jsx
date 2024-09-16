@@ -249,7 +249,7 @@ const LoginForm = () => {
                 setAuth(data.data); // Atualiza o estado de autenticação
                 console.log('User info set:', data.data);
 
-                if (data.data.did) { // Verifica se o DID está presente
+                if (typeof window !== 'undefined' && data.data.did) { // Verifica se o DID está presente e se está no lado do cliente
                     localStorage.setItem('auth', JSON.stringify(data.data)); // Armazena os dados do usuário no localStorage
                     window.location.href = `/`; // Redireciona para a rota dinâmica
                 }
