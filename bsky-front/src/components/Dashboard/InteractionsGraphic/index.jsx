@@ -1,122 +1,108 @@
-import { useEffect } from 'react';
-import { StyledAss001, StyledCen003, StyledTit002 } from "@/app/variaveis";
-import { StyledSpan } from '../Interactions/InteractionsItem/style';
-import { StyledInteractionsGraphic } from "./style";
-import ApexCharts from 'apexcharts';
-import dayjs from 'dayjs';
-import quarterOfYear from 'dayjs/plugin/quarterOfYear';
-import { InteractionsCard } from '../Interactions/InteractionsItem';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ApexChart from './ApexChart'; // Certifique-se de que o caminho está correto
+import { StyledInteractionsGraphic } from './style.js';
+import { InteractionsCard } from '../Interactions/InteractionsItem/index.jsx'; // Importação nomeada
 
-dayjs.extend(quarterOfYear);
 
-const options = {
-    series: [{
-        name: 'Audiencia',
-        data: [{
-            x: '01 dec',
-            y: 400
-        }, {
-            x: '01 dec',
-            y: 430
-        }, {
-            x: '01 dec',
-            y: 448
-        }, {
-            x: '01 dec',
-            y: 470
-        }, {
-            x: '01 dec',
-            y: 540
-        }, {
-            x: '01 dec',
-            y: 580
-        }, {
-            x: '01 dec',
-            y: 690
-        }, {
-            x: '01 dec',
-            y: 690
-        }]
-    }],
-    chart: {
-        type: 'bar',
-        height: 380,
-        toolbar: {
-            show: false // Adiciona esta linha para remover a marca d'água
-        }
-    },
-    colors: ['var(--Cor002)'], // Define a cor das barras
-    plotOptions: {
-        bar: {
-            columnWidth: '50%', // Define a largura das barras (50% do espaço disponível)
-            borderRadius: 4, // Define o border-radius das barras
-            borderRadiusApplication: 'end', // Aplica o border-radius no topo das barras
-            borderRadiusWhenStacked: 'all' // Aplica o border-radius em todas as barras quando empilhadas
-        }
-    },
-    xaxis: {
-        type: 'Interações',
-        labels: {
-            formatter: function (val) {
-                return dayjs(val).format('DD MMM'); // Formata os rótulos do eixo X para mostrar o dia e o mês
+
+
+const fetchTotalLikesLast7Days = async () => {
+    const today = new Date();
+    const likesData = [];
+    const auth = localStorage.getItem('auth'); // Obter o auth do localStorage
+
+    if (!auth) {
+        console.error('Auth não encontrado no localStorage');
+        return likesData;
+    }
+
+    const did = JSON.parse(auth).did; // Parse o auth para obter o did
+
+    // Começar a contagem a partir de um dia antes do dia atual
+    for (let i = 1; i <= 7; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        const formattedDate = date.toISOString().split('T')[0];
+        const displayDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+
+        try {
+            const response = await axios.get(`http://api.ojaum.live/feedbydate?did=${did}&date=${formattedDate}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': process.env.NEXT_PUBLIC_API_KEY
+                }
+            });
+
+            if (response.data && response.data.postsInfo) {
+                const totalLikes = response.data.postsInfo.reduce((sum, post) => sum + post.likeCount, 0);
+                likesData.push({
+                    day: displayDate,
+                    totalLikes,
+                    date: formattedDate // Adiciona a data ao objeto
+                });
+            } else {
+                console.error(`No postsInfo data returned for date ${formattedDate}`);
             }
-        },
-        axisBorder: {
-            show: false // Remove a linha do eixo X
-        },
-        axisTicks: {
-            show: false // Remove os ticks do eixo X
-        },
-        group: {
-            style: {
-                fontSize: '10px',
-                fontWeight: 700
-            },
-            groups: [
-                { title: '2019', cols: 1 },
-                { title: '2020', cols: 2 },
-                { title: '2021', cols: 3 },
-                { title: '2022', cols: 4 },
-                { title: '2023', cols: 5 },
-                { title: '2024', cols: 6 },
-                { title: '2025', cols: 7 }
-            ]
-        }
-    },
-    grid: {
-        borderColor: '#e0e0e0', // Define a cor das linhas horizontais
-        strokeDashArray: 5, // Define as linhas horizontais como pontilhadas com espaçamento de 5
-        xaxis: {
-            lines: {
-                show: false // Remove a linha do eixo X
-            }
+        } catch (error) {
+            console.error(`Erro ao buscar likes para a data ${formattedDate}:`, error);
         }
     }
+
+    // Ordenar os dados do mais antigo para o mais recente
+    likesData.reverse();
+
+    console.log('Likes Data:', likesData); // Adiciona log para verificar os dados de likes
+    return likesData;
 };
 
-
-
 export function InteractionsGraphic() {
-    useEffect(() => {
-        const chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-        return () => {
-            chart.destroy();
-        };
-    }, []);
+    const [likesData, setLikesData] = useState([]);
+    const [totalLikes, setTotalLikes] = useState(0);
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const data = await fetchTotalLikesLast7Days();
+    //         console.log('Fetched Data:', data); // Adiciona log para verificar os dados buscados
+    //         setLikesData(data);
+    //     };
+
+    //     fetchData();
+    // }, []);
+
+    const [averageLikesPercentage, setAverageLikesPercentage] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await fetchTotalLikesLast7Days();
+            console.log('Fetched Data:', data); // Adiciona log para verificar os dados buscados
+            setLikesData(data);
+            const totalLikesSum = data.reduce((sum, item) => sum + item.totalLikes, 0);
+            setTotalLikes(totalLikesSum);
+            const averageLikes = totalLikesSum / 7; // Calcula a média diária
+            const averageLikesPercentage = (averageLikes / totalLikesSum) * 100; // Calcula a média diária em porcentagem
+            setAverageLikesPercentage(averageLikesPercentage);
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <StyledInteractionsGraphic>
-            <div className="cen_002" >
+            <div className="cen_002">
                 <div className='container'>
                     <div className="con_inf_gra">
-                        <InteractionsCard className={"grapgic Ite_Pad"} description={"Audience"} number={"301,097"} spanValue={"58.31"} spanStyle={"styleUp"} days={"for 7 last days"} />
+                        <InteractionsCard
+                            className={"grapgic Ite_Pad"}
+                            description={"Likes"}
+                            number={totalLikes.toLocaleString()} // Formata o número com separadores de milhLr
+                            spanValue={averageLikesPercentage.toFixed(2) + "%"}
+                            spanstyle={"styleUp"}
+                            days={"for 7 last days"}
+                        />
                     </div>
                     <div className="con_gra_int">
-                        <div className="graphic" id="chart">
-
-                        </div>
+                        <ApexChart data={likesData} /> {/* Use o componente ApexChart */}
                     </div>
                 </div>
             </div>

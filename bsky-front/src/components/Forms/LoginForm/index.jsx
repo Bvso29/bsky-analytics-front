@@ -251,7 +251,7 @@ const LoginForm = () => {
 
                 if (typeof window !== 'undefined' && data.data.did) { // Verifica se o DID está presente e se está no lado do cliente
                     localStorage.setItem('auth', JSON.stringify(data.data)); // Armazena os dados do usuário no localStorage
-                    window.location.href = `/`; // Redireciona para a rota dinâmica
+                    window.location.href = `/dashboard`; // Redireciona para a rota dinâmica
                 }
                 console.log(data.data.did);
             } else {

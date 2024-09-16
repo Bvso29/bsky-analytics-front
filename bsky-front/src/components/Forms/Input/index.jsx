@@ -1,4 +1,3 @@
-// src/components/Input/index.jsx
 "use client";
 
 import React from 'react';

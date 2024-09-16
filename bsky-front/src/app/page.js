@@ -1,10 +1,14 @@
 "use client"
-import { Dashboard } from "@/components/Dashboard"
+import { AuthProvider } from "../../providers/UserContext"
+import LoginForm from "@/components/Forms/LoginForm"
 
 export default function Home() {
     return (
         <>
-            <Dashboard></Dashboard>
+            <AuthProvider>
+
+                <LoginForm />
+            </AuthProvider>
         </>
     )
 }
