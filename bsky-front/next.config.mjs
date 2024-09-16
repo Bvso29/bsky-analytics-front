@@ -1,8 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['cdn.bsky.app'], // Adicione o domínio permitido aqui
-    },
-  };
+  compiler: {
+      styledComponents: true,
+  },
+  images: {
+      remotePatterns: [
+          {
+              protocol: 'https',
+              hostname: 'cdn.bsky.app',
+              pathname: '/**',
+          },
+      ],
+  },
+}
 
-  export default nextConfig;
+export default nextConfig;
