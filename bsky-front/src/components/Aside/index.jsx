@@ -1,5 +1,5 @@
 
-import { StyledTex001 } from "@/app/variaveis";
+import { StyledTex001 } from "../../../style/variaveis";
 import { StyledAside } from "./style";
 import Image from "next/image";
 
@@ -10,7 +10,6 @@ export function Aside({ userData }) {
         window.location.href = '/'; // Redireciona para a página de login
     };
 
-    console.log(userData)
     return (
         <StyledAside>
             <div className="Perfil">
@@ -27,7 +26,7 @@ export function Aside({ userData }) {
                         </p>
                     </div>
                 </div>
-                <button onClick={handleLogout}>+</button>
+                <button onClick={handleLogout}>Sair</button>
             </div>
             <nav className="Menu">
                 <p>Menu</p>

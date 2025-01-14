@@ -21,11 +21,12 @@ export const StyledAside = styled.aside`
         }
         button {
             width: 40px;
-            font-size: 3rem;
+            font-size: 1.4rem;
             color: white;
-            background-color: var(--Cor002);
+            /* background-color: var(--Cor002); */
             border-radius: 0.8rem;
             border: none;
+            border: 1px solid var(--Cor002);
         }
     }
 

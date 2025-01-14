@@ -17,7 +17,7 @@ export const StyleCircle = styled.div`
     }
 
     /* Phone */
-    @media (max-width: 767.98px) {
+    @media (max-width: 991.98px) {
         width: 100%;
 
         .Cen_002 {

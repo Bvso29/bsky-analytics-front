@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -91,7 +95,7 @@ body {
   /* background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
-      background: var(--Bkg001);
+  background: var(--Bkg001);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -137,14 +141,21 @@ button {
 }
 
 /* Coloca cor menu no gráfico InteractionsGraphic */
-.apexcharts-menu{
+.apexcharts-menu {
   color: blue;
 }
 
 /* Cor da hover no grafico InteractionsGraphic */
-.apexcharts-tooltip  {
+.apexcharts-tooltip {
   background-color: #070f25 !important;
 }
-.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title{
+/* Cor da hover no grafico InteractionsGraphic */
+.apexcharts-toolbar {
+  z-index: 1 !important;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
   background-color: #070f25 !important;
 }
+
+

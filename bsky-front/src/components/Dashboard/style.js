@@ -7,7 +7,7 @@ export const StyledContainer = styled.section`
         display: flex;
         background-color: var(--Bkg002);
         border-radius: 1rem;
-        padding: 1rem 0;
+        padding: 2rem 0;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
         .Periodo {
@@ -54,11 +54,13 @@ export const StyledContainer = styled.section`
         width: 100%;
         flex-grow: 1; /* Permite que o elemento ocupe o restante do espaço */
         margin-left: 32rem; /* Espaço para compensar a largura do .Con_Men e o gap */
+        overflow: hidden;
 
         .Con_Con_Gra {
             display: flex;
             margin: 0 auto;
             gap: 2rem;
+            /* height: 538px; */
             /* align-items: center; */
         }
     }
@@ -97,7 +99,7 @@ export const StyledContainer = styled.section`
             grid-template-columns: repeat(23 1fr);
         }
 
-        .Filtro{
+        .Filtro {
             flex-direction: column;
         }
     }
@@ -124,13 +126,15 @@ export const StyledContainer = styled.section`
         .Inf_Uti {
             grid-template-columns: repeat(2, 1fr);
         }
-    }
 
-    /* Phone */
-    @media (max-width: 767.98px) {
         .Con_Con_Gra {
             flex-direction: column;
             gap: 2rem;
         }
+    }
+
+    /* Phone */
+    @media (max-width: 767.98px) {
+
     }
 `

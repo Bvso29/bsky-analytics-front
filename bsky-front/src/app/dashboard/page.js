@@ -1,10 +1,12 @@
 "use client"
-import { Dashboard } from "@/components/Dashboard"
 
-export default function Home() {
+import { DashboardContent } from "@/components/Dashboard";
+import { InteractionProvider } from "../../../providers/useInteractionContext";
+
+export default function Dashboard() {
     return (
-        <>
-            <Dashboard></Dashboard>
-        </>
-    )
+        <InteractionProvider>
+            <DashboardContent />
+        </InteractionProvider>
+    );
 }

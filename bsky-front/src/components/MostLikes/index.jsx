@@ -1,4 +1,4 @@
-import { StyledCen002 } from "@/app/variaveis";
+import { StyledCen002 } from "../../../style/variaveis";
 import { StyledMostLikes } from "./style";
 import Image from "next/image";
 import Img_Post from "../../../assets/img_post.jpg";

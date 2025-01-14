@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { StyleHearthMap } from './style';
-import { StyledCen002 } from '@/app/variaveis';
+import { StyledCen002 } from '../../../style/variaveis';
 
 // Carregar ReactApexChart dinamicamente para suportar Next.js
 const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });

@@ -15,8 +15,8 @@ export const StyledTit002 = styled.h2`
 ///////////////////////////////// Texto
 // Fonte | Texto 001
 export const StyledTex001 = styled.p`
-    font-size: clamp(18px, 4vw, 20px);
-    line-height: clamp(22px, 4vw, 24px);
+    font-size: clamp(1.8rem, 4vw, 2rem);
+    line-height: clamp(2.2rem, 4vw, 2.4rem);
 `
 // Fonte | Texto 002
 export const StyledTex002 = styled.p`

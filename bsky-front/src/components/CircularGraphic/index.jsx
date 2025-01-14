@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { StyleCircle } from './style';
-import { useInteractionContext } from '../../../../providers/useInteractionContext.jsx';
-import { StyledCen002 } from '@/app/variaveis';
+import { useInteractionContext } from '../../../providers/useInteractionContext.jsx'; // Importar o hook do contexto
+import { StyledCen002 } from '../../../style/variaveis.js';
 
 // Carregar o componente Chart dinamicamente para evitar problemas com SSR
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
@@ -21,7 +21,6 @@ const CircularGraphic = () => {
             percentageReposts !== undefined ? percentageReposts : 0,
             percentageQuotes !== undefined ? percentageQuotes : 0
         ];
-        console.log('New series:', newSeries); // Adicionar log para verificar os valores das séries
         setSeries(newSeries);
         setIsDataReady(true); // Definir que os dados estão prontos
     }, [percentageLikes, percentageReplies, percentageReposts, percentageQuotes]);
@@ -65,8 +64,6 @@ const CircularGraphic = () => {
         }]
     };
 
-    // Adicionar logs para verificar as opções do gráfico
-    console.log('Chart options:', options);
 
     // Renderizar o componente Chart apenas no lado do cliente e quando os dados estiverem prontos
     if (!isClient || !isDataReady) {

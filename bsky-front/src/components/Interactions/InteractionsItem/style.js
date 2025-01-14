@@ -26,24 +26,28 @@ export const StyledSpan = styled.span`
     line-height: clamp(1.4rem, 4vw, 1.8rem);
 
     div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &::after {
-            content: "%";
-            display: block;
-        }
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+        content: "%";
+        display: block;
     }
 
     /* If para Adicionar Cor ao Span */
     ${({ spanstyle }) => {
-        if (spanstyle === "styleUp") {
+        if (spanstyle === "positive") {
             return css`
-                color: green;
+                color: green; // Verde para positivo
             `
-        } else if (spanstyle === "styleDown") {
+        } else if (spanstyle === "negative") {
             return css`
-                color: red;
+                color: red; // Vermelho para negativo
+            `
+        } else if (spanstyle === "zero") {
+            return css`
+                color: white; // Branco para zero
             `
         } else {
             return css`

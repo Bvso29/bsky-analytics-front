@@ -25,7 +25,7 @@ const UserPage = () => {
         const fetchPosts = async () => {
             if (userData) {
                 try {
-                    const response = await axios.get(`http://api.ojaum.live/feed?did=${userData.did}&limit=${limit}`, {
+                    const response = await axios.get(`https://api.ojaum.lat/feed?did=${userData.did}&limit=${limit}`, {
                         headers: {
                             'Content-Type': 'application/json',
                             'x-api-key': process.env.NEXT_PUBLIC_API_KEY // Acessa a variável de ambiente

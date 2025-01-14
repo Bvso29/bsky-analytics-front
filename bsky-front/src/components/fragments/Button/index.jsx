@@ -1,8 +1,8 @@
 import StyledButton from "./style";
 
-const ButtonPad = ({ onClick, text }) => {
+const ButtonPad = ({ onClick, text, id }) => {
     return (
-        <StyledButton onClick={onClick} content={text}>
+        <StyledButton onClick={onClick} content={text} id={id}>
             {text}
         </StyledButton>
     );
