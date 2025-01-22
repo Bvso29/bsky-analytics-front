@@ -84,7 +84,7 @@ export const StyledInput = styled.input`
     }
 `
 export const StyledLabel = styled.label`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #e8e8e8;
   margin-bottom: 8px;

@@ -1,4 +1,5 @@
 // styled.js
+import { Siemreap } from "next/font/google"
 import styled from "styled-components"
 
 export const StyledTit001 = styled.h2`
@@ -83,6 +84,7 @@ export const StyledCen003 = styled.div`
     max-width: 60rem;
     padding: 2rem 0;
 `
+
 
 
 // // ********* Width Medias | Site *********

@@ -16,7 +16,7 @@ export const SelectContainer = styled.div`
     overflow: hidden;
 
     select {
-        background-color: #2a2f3b;
+        background-color: #0b1739;
         padding: 5px;
         margin-bottom: 3px;
         border-radius: 5px;

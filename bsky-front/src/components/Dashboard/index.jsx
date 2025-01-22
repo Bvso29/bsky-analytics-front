@@ -11,12 +11,10 @@ import { StyledContainer } from "./style";
 import { InteractionProvider, useInteractionContext } from '../../../providers/useInteractionContext';
 import MyDatePicker from '../DatePicker';
 import CircularGraphic from '../CircularGraphic';
-import { calculateTotal, calculateAverage, calculatePercentage, formatNumber } from '../../../utils/utils.js'; // Importando as funções utilitárias
-import { OtherNumbers } from '../OtherNumbers';
-import { fetchPostsByDate } from '@/api/postDataService';
 import { fetchPostsByPeriod } from '@/api/postPeriodService';
 import { fetchPosts } from '@/api/postService';
 import { updatePostStatistics } from '../../../utils/postUtils';
+import Loading from '../fragments/Loading';
 
 
 export function DashboardContent() {
@@ -89,7 +87,7 @@ export function DashboardContent() {
         }
     }, [userData, startDate, endDate]);
     if (!userData) {
-        return <div>Loading...</div>;
+        return <Loading></Loading>// Mostra o indicador de carregamento;
     }
 
     return (

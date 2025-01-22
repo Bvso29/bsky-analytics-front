@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 const StyledButton = styled.button`
+    font-size: 16px;
     width: 14rem;
     height: 4rem;
     border: none;
@@ -24,6 +25,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     transition-duration: 1s;
     overflow: hidden;
+
 
     &::before {
     position: absolute;

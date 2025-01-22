@@ -6,6 +6,7 @@ import ApexChart from './ApexChart'; // Certifique-se de que o caminho está cor
 import { StyledInteractionsGraphic } from './style.js';
 import { InteractionsCard } from '../Interactions/InteractionsItem/index.jsx'; // Importação nomeada
 import SelectGroup from './SelectGroup';
+import Loading from '../fragments/Loading';
 
 const fetchTotalMetricsLastDays = async (days, metric) => {
     const today = new Date();
@@ -153,15 +154,13 @@ export function InteractionsGraphic() {
                             className={"grapgic Ite_Pad"}
                             description={formatMetricName(metric)} // Use a função para formatar o nome da métrica
                             number={totalMetric.toLocaleString()} // Formata o número com separadores de milhar
-                            // spanValue={averageMetricPercentage.toFixed(2) + "%"}
-                            // spanstyle={"styleUp"}
                             days={`for last ${days} days`}
                         />
                     <SelectGroup  days={days} setDays={setDays} metric={metric} setMetric={setMetric}/>
                     </div>
                     <div className="con_gra_int">
                         {loading ? (
-                            <p>Loading...</p> // Mostra o indicador de carregamento
+                            <Loading></Loading>// Mostra o indicador de carregamento
                         ) : (
                             <ApexChart data={formattedMetricsData} metric={metric} /> // Use o componente ApexChart
                         )}
