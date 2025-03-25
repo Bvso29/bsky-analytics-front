@@ -53,7 +53,7 @@ const LoginForm = () => {
     return (
         <StyledSection>
 
-            <StyledTex002>Digite o perfil "@felps" (sugestão)</StyledTex002>
+            <StyledTex002>Digite o perfil *@felps* (sugestão)</StyledTex002>
 
             <StyledForm onSubmit={handleSubmit}>
                 <StyledTit001>SkyLytics</StyledTit001>
