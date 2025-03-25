@@ -31,6 +31,7 @@ export const SelectContainer = styled.div`
 
     .custom-select {
         appearance: none; /* Remove a seta padrão */
+        background: #081028;
 
         background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"><path d="M7 10l5 5 5-5H7z"/></svg>'); /* Seta simples */
         background-repeat: no-repeat;

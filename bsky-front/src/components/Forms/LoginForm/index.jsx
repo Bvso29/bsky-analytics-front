@@ -6,7 +6,7 @@ import { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../../../providers/UserContext.jsx'; // Ajuste o caminho conforme necessário
 import { StyledDiv, StyledDivLogin, StyledForm, StyledSection } from "./styled";
-import { StyledTit001 } from "../../../../style/variaveis.js";
+import { StyledTex001, StyledTex002, StyledTit001 } from "../../../../style/variaveis.js";
 import InputPad from '@/components/fragments/Input/index.jsx';
 import ButtonPad from '@/components/fragments/Button/index.jsx';
 
@@ -52,6 +52,7 @@ const LoginForm = () => {
 
     return (
         <StyledSection>
+                    <StyledTex002>Digite o perfil "@felps" (sugestão)</StyledTex002>
             <StyledForm onSubmit={handleSubmit}>
                 <StyledTit001>SkyLytics</StyledTit001>
                 <StyledDiv>

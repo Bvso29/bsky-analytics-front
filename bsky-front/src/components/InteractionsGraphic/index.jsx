@@ -156,11 +156,14 @@ export function InteractionsGraphic() {
                             number={totalMetric.toLocaleString()} // Formata o número com separadores de milhar
                             days={`for last ${days} days`}
                         />
-                    <SelectGroup  days={days} setDays={setDays} metric={metric} setMetric={setMetric}/>
+                        <SelectGroup days={days} setDays={setDays} metric={metric} setMetric={setMetric} />
                     </div>
                     <div className="con_gra_int">
                         {loading ? (
-                            <Loading></Loading>// Mostra o indicador de carregamento
+                            <div className="con_gra_int_Loa">
+                                <Loading></Loading> 
+
+                            </div>
                         ) : (
                             <ApexChart data={formattedMetricsData} metric={metric} /> // Use o componente ApexChart
                         )}

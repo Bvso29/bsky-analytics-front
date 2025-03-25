@@ -1,18 +1,31 @@
 import { LoadingSytle } from "./style";
+import "./style.css"
 
 function Loading() {
     return (
-        <LoadingSytle class="middle">
-            <div class="bar bar1"></div>
-            <div class="bar bar2"></div>
-            <div class="bar bar3"></div>
-            <div class="bar bar4"></div>
-            <div class="bar bar5"></div>
-            <div class="bar bar6"></div>
-            <div class="bar bar7"></div>
-            <div class="bar bar8"></div>
-        </LoadingSytle>
-
+        // < !--From Uiverse.io by csozidev-- >
+        <div class="loader">
+            <div class="box box-1">
+                <div class="side-left"></div>
+                <div class="side-right"></div>
+                <div class="side-top"></div>
+            </div>
+            <div class="box box-2">
+                <div class="side-left"></div>
+                <div class="side-right"></div>
+                <div class="side-top"></div>
+            </div>
+            <div class="box box-3">
+                <div class="side-left"></div>
+                <div class="side-right"></div>
+                <div class="side-top"></div>
+            </div>
+            <div class="box box-4">
+                <div class="side-left"></div>
+                <div class="side-right"></div>
+                <div class="side-top"></div>
+            </div>
+        </div>
 
     );
 }
